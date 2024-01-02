@@ -8,10 +8,10 @@
         <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
         <property name="connection.username">postgres</property>
         <property name="connection.password">260693</property>
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">10</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL94Dialect</property>
         <property name="current_session_context_class">thread</property>
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>
