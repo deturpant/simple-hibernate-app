@@ -8,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
+        SessionFactory factory = new Configuration()
+                .configure()
+                .addAnnotatedClass(Catalog.class)
+                .buildSessionFactory();
     }
 }
