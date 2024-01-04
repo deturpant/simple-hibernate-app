@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.HashSet;
+
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -24,6 +26,16 @@ public class Main {
             session.save(newCat);
             session.getTransaction().commit();
 */
+            session = factory.getCurrentSession();
+            Song song = new Song("Ride the lightning");
+            Artist artist = new Artist("Metallica");
+            HashSet<Song> songs_by_artists = new HashSet<Song>();
+            songs_by_artists.add(song);
+            artist.setSongs(songs_by_artists);
+            session.beginTransaction();
+            session.save(song);
+            session.save(artist);
+            session.getTransaction().commit();
 
             //READ
 /*            session = factory.getCurrentSession();

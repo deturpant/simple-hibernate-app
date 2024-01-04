@@ -41,6 +41,14 @@ public class Song
         this.id = id;
     }
 
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
+    }
+
     public String getTitle() {
         return title;
     }
