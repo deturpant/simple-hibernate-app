@@ -29,11 +29,20 @@ public class Main {
             session.getTransaction().commit();
             System.out.println(catalog);*/
             //UPDATE
-            session = factory.getCurrentSession();
+/*            session = factory.getCurrentSession();
             session.beginTransaction();
             Catalog catalog = session.get(Catalog.class, 2);
             catalog.setTitle("sex");
-            session.getTransaction().commit();
+            session.getTransaction().commit();*/
+            //DELETE
+            /*session = factory.getCurrentSession();
+            session.beginTransaction();
+            Catalog catalog = session.get(Catalog.class, 2);
+            session.remove(catalog);
+            session.detach(catalog); // отсоединить объект от контекста хибернейта
+            session.persist(catalog); // присоединить объект к контексту
+            session.refresh(catalog); // обновить данные с БД в объект
+            */
 
         } catch (Exception ex) {
             ex.printStackTrace();
