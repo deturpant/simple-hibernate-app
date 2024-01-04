@@ -11,16 +11,19 @@ public class Main {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure()
-                .addAnnotatedClass(Catalog.class)
+                .addAnnotatedClass(Artist.class)
+                .addAnnotatedClass(Song.class)
                 .buildSessionFactory();
         Session session = null;
         try {
             //CREATE
-/*            session = factory.getCurrentSession();
+/*
+            session = factory.getCurrentSession();
             Catalog newCat = new Catalog("Firefox14");
             session.beginTransaction();
             session.save(newCat);
-            session.getTransaction().commit();*/
+            session.getTransaction().commit();
+*/
 
             //READ
 /*            session = factory.getCurrentSession();
