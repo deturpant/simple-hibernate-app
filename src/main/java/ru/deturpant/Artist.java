@@ -36,10 +36,16 @@ public class Artist
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nAvailable songs:\n");
+        for (Song i : songs) {
+            sb.append(i);
+        }
+        sb.append("\n");
         return "Artist{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                '}';
+                '}' + sb;
     }
 
     public Artist() {

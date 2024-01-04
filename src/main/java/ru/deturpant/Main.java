@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.HashSet;
+import java.util.*;
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -19,14 +19,7 @@ public class Main {
         Session session = null;
         try {
             //CREATE
-/*
-            session = factory.getCurrentSession();
-            Catalog newCat = new Catalog("Firefox14");
-            session.beginTransaction();
-            session.save(newCat);
-            session.getTransaction().commit();
-*/
-            session = factory.getCurrentSession();
+ /*           session = factory.getCurrentSession();
             Song song = new Song("Ride the lightning");
             Artist artist = new Artist("Metallica");
             HashSet<Song> songs_by_artists = new HashSet<Song>();
@@ -35,14 +28,17 @@ public class Main {
             session.beginTransaction();
             session.save(song);
             session.save(artist);
-            session.getTransaction().commit();
+            session.getTransaction().commit();*/
 
             //READ
-/*            session = factory.getCurrentSession();
+            session = factory.getCurrentSession();
             session.beginTransaction();
-            Catalog catalog = session.get(Catalog.class, 2);
-            session.getTransaction().commit();
-            System.out.println(catalog);*/
+            List<Artist> artist_from_db = new ArrayList<Artist>();
+            artist_from_db = session.createQuery("from Artist", Artist.class).getResultList();
+            //session.getTransaction().commit();
+            for (Artist i : artist_from_db) {
+                System.out.println(i);
+            }
             //UPDATE
 /*            session = factory.getCurrentSession();
             session.beginTransaction();
