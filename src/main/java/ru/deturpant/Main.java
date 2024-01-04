@@ -3,6 +3,7 @@ package ru.deturpant;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.util.*;
 
@@ -18,17 +19,20 @@ public class Main {
                 .buildSessionFactory();
         Session session = null;
         try {
+            session = factory.getCurrentSession();
             //CREATE
- /*           session = factory.getCurrentSession();
-            Song song = new Song("Ride the lightning");
-            Artist artist = new Artist("Metallica");
-            HashSet<Song> songs_by_artists = new HashSet<Song>();
-            songs_by_artists.add(song);
-            artist.setSongs(songs_by_artists);
             session.beginTransaction();
-            session.save(song);
-            session.save(artist);
-            session.getTransaction().commit();*/
+            Query<Song> query1 = session.createQuery("from Song u where u.title=:title", Song.class);
+            query1.setParameter("title", "Test metallica song");
+            Song findedsong = query1.uniqueResult();
+            System.out.println(findedsong);
+            Query<Artist> query = session.createQuery("from Artist u where u.name=:name", Artist.class);
+            query.setParameter("name", "Metallica");
+            Artist findedArtist = query.uniqueResult();
+            System.out.println(findedArtist);
+            findedsong.getArtists().add(findedArtist);
+            findedArtist.getSongs().add(findedsong);
+            session.getTransaction().commit();
 
             //READ
             session = factory.getCurrentSession();
